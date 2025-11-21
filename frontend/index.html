@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Oficina de transito || Vehiculos</title>
+    <!-- plugins:css -->
+    <link
+      rel="stylesheet"
+      href="assets/vendors/mdi/css/materialdesignicons.min.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- endinject -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="navbar-brand-wrapper d-flex justify-content-center">
+          <div
+            class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100"
+          >
+            <a class="navbar-brand brand-logo" href="index.html"
+              ><h3 class="fw-bold">
+                <i class="mdi mdi-card-account-details"></i> Transito
+              </h3></a
+            >
+            <a class="navbar-brand brand-logo-white" href="index.html"
+              ><img src="" alt="logo"
+            /></a>
+            <a class="navbar-brand brand-logo-mini" href="index.html"
+              ><h3 class="fw-bold">
+                <i class="mdi mdi-card-account-details"></i></h3
+            ></a>
+          </div>
+        </div>
+        <div
+          class="navbar-menu-wrapper d-flex align-items-center justify-content-end"
+        >
+          <ul class="navbar-nav me-lg-4 w-100">
+            <li class="nav-item nav-search d-none d-lg-block w-100">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="search">
+                    <i class="mdi mdi-magnify"></i>
+                  </span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Search now"
+                  aria-label="search"
+                  aria-describedby="search"
+                />
+              </div>
+            </li>
+          </ul>
+          <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item nav-profile dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                data-bs-toggle="dropdown"
+                id="profileDropdown"
+              >
+                <img src="./assets/images/user_icono.png" alt="profile" />
+                <span class="nav-profile-name">Daniel F. Ramirez</span>
+              </a>
+              <div
+                class="dropdown-menu dropdown-menu-right navbar-dropdown"
+                aria-labelledby="profileDropdown"
+              >
+                <a class="dropdown-item">
+                  <i class="mdi mdi-cog text-primary"></i>
+                  Settings
+                </a>
+                <a class="dropdown-item">
+                  <i class="mdi mdi-logout text-primary"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+          </ul>
+          <button
+            class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
+            type="button"
+            data-toggle="offcanvas"
+          >
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">
+                <i class="mdi mdi-car-back menu-icon"></i>
+                <span class="menu-title">Vehiculos</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="row container-fluid">
+              <div class="col-sm-3">
+                <h3 class="fw-bold">Vehiculos</h3>
+              </div>
+            </div>
+
+            <div class="row mt- container-fluid">
+              <div class="col">
+                <button id="btnNuevo" class="btn btn-primary fw-bold shadow-sm">
+                  Nuevo
+                </button>
+              </div>
+            </div>
+
+            <div class="container-fluid mt-3">
+              <div class="row">
+                <div class="col-lg-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Listado de Vehiculos</h4>
+                      <div class="table-responsive">
+                        <table class="table table-striped table-sm">
+                          <thead>
+                            <tr>
+                              <th>Codigo</th>
+                              <th class="text-center">Descripcion</th>
+                              <th>Marca</th>
+                              <th>Modelo</th>
+                              <th>Placa</th>
+                              <th class="text-center">Anotaciones</th>
+                            </tr>
+                          </thead>
+                          <tbody id="tblVehiculos"></tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+
+          <!-- Inicio Modal -->
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="modalVehiculos"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header bg-primary">
+                  <h1
+                    class="modal-title fs-5 text-light fw-bold"
+                    id="exampleModalLabel"
+                  >
+                    Gestion de vehiculos
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <form id="frmVehiculos">
+                  <div class="modal-body bg-body-tertiary">
+                    <div class="mb-3">
+                      <label for="txtCodigo" class="form-label">Codigo</label>
+                      <input
+                        type="text"
+                        class="form-control form-control-sm shadow-sm"
+                        id="txtCodigo"
+                        placeholder="Ingrese el codigo del vehiculo"
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="txtDescripcion" class="form-label"
+                        >Descripcion</label
+                      >
+                      <textarea
+                        class="form-control shadow-sm"
+                        id="txtDescripcion"
+                        rows="3"
+                        placeholder="Ingrese la descripcion del vehiculo"
+                      ></textarea>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="mb-3">
+                          <label for="txtMarca" class="form-label">Marca</label>
+                          <input
+                            type="text"
+                            class="form-control form-control-sm shadow-sm"
+                            id="txtMarca"
+                            placeholder="Ingrese la marca del vehiculo"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="mb-3">
+                          <label for="txtModelo" class="form-label"
+                            >Modelo</label
+                          >
+                          <input
+                            type="number"
+                            class="form-control form-control-sm shadow-sm"
+                            id="txtModelo"
+                            placeholder="Ingrese el modelo del vehiculo"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="txtPlaca" class="form-label">Placa</label>
+                      <input
+                        type="text"
+                        class="form-control form-control-sm shadow-sm"
+                        id="txtPlaca"
+                        placeholder="Ingrese la placa del vehiculo"
+                      />
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="txtAnotaciones fw-bold" class="form-label"
+                        >Anotaciones</label
+                      >
+                      <textarea
+                        class="form-control shadow-sm"
+                        id="txtAnotaciones"
+                        rows="3"
+                        placeholder="Ingrese anotaciones adicionales del vehiculo"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Cerrar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                      Guardar
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- Fin de la modal -->
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer">
+            <div
+              class="d-sm-flex justify-content-center justify-content-sm-between"
+            >
+              <span
+                class="text-muted text-center text-sm-left d-block d-sm-inline-block"
+                >Copyright © 2025
+                <a href="https://www.bootstrapdash.com/" target="_blank"
+                  >Oficina de transito</a
+                >. Todos los derechos reservados.</span
+              >
+              <span
+                class="float-none float-sm-end d-block mt-1 mt-sm-0 text-center"
+                >Daniel F. Ramirez Navarro
+              </span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <!-- endinject -->
+
+    <!-- JS Consumir API -->
+    <script src="assets/js/app_vehiculos.js"></script>
+    <!-- Sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>

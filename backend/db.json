@@ -1,0 +1,28 @@
+{
+  "vehiculos": [
+    {
+      "id": "1",
+      "descripcion": "Carro 4 puertas de color blanco y negro sin vidrios",
+      "marca": "Renault",
+      "modelo": "2023",
+      "placa": "VDL235",
+      "anotaciones": "conduccion temeraria"
+    },
+    {
+      "id": "0e36",
+      "descripcion": "Motocicleta 110cc negra con azul",
+      "marca": "Hero",
+      "modelo": "2025",
+      "placa": "VOK90L",
+      "anotaciones": "Exceso de facha, pinta, freseo"
+    },
+    {
+      "id": "73e0",
+      "descripcion": "Moto 150cc FZ",
+      "marca": "Yamaha",
+      "modelo": "2020",
+      "placa": "GHL20P",
+      "anotaciones": "Conduccion temeraria en pasaje escolar"
+    }
+  ]
+}

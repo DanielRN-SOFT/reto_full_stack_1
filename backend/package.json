@@ -1,0 +1,21 @@
+{
+  "name": "reto_full_stack_1",
+  "version": "1.0.0",
+  "description": "Reto de CRUD basado en una agencia de transito para vehiculos",
+  "keywords": [
+    "Transito",
+    "Vehiculos",
+    "Placa"
+  ],
+  "license": "ISC",
+  "author": "DanielRN-SOFT",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "json-server": "^1.0.0-beta.3",
+    "sweetalert2": "^11.26.3"
+  }
+}
