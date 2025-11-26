@@ -4,7 +4,8 @@ const tblVehiculos = document.querySelector("#tblVehiculos");
 const ulrApi = "http://localhost:3000/vehiculos/";
 const modalVehiculos = new bootstrap.Modal("#modalVehiculos");
 const frmVehiculos = document.querySelector("#frmVehiculos");
-console.log(frmVehiculos);
+const capaReload = document.querySelector("#capaReload");
+let contenidoBuscador = [];
 
 // Campos
 const txtCodigo = document.querySelector("#txtCodigo");
@@ -106,7 +107,7 @@ btnNuevo.addEventListener("click", () => {
 });
 
 tblVehiculos.addEventListener("click", (e) => {
-  if (e.target.classList.contains("btnEliminar"))  {
+  if (e.target.classList.contains("btnEliminar")) {
     let fila = e.target.closest("tr");
     let codigo = fila.cells[0].innerText;
     let placa = fila.cells[4].innerText;
@@ -170,10 +171,59 @@ tblVehiculos.addEventListener("click", (e) => {
       })
         .then((res) => res.json())
         .then((res) => {
-          console.log(res);
           modalVehiculos.hide();
           location.reload();
         });
     });
   }
 });
+
+btnBuscar.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (txtBuscar.value.length === 0) {
+    Swal.fire({
+      title: "Busqueda fallida",
+      text: "No ingresaste ningun codigo, intentalo de nuevo..",
+      icon: "error",
+    }).then(() => {
+      location.reload();
+    });
+    return;
+  }
+  tblVehiculos.innerHTML = "";
+  let urlBuscador = ulrApi + txtBuscar.value;
+  fetch(urlBuscador, {
+    metodo: "GET",
+  })
+    .then((response) => {
+      if (!response.ok) {
+        Swal.fire({
+          title: "Sin resultados",
+          text: "No se encontró ningun vehiculo con ese codigo...",
+          icon: "error",
+        }).then(() => {
+          location.reload();
+        });
+        throw new Error("Error en la petición: " + response.status);
+      }
+      return response.json();
+    })
+    .then((response) => {
+      contenidoBuscador = [];
+      contenidoBuscador.push(response);
+      llenarBuscador(contenidoBuscador);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+});
+
+const llenarBuscador = (objetoJSON) => {
+  tblVehiculos.innerHTML = "";
+  txtBuscar.value = "";
+  llenarTabla(objetoJSON);
+  let link = document.createElement("a");
+  link.href = "index.html";
+  link.innerText = "Volver al listado";
+  capaReload.appendChild(link);
+};
