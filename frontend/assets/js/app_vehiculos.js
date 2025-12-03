@@ -84,13 +84,35 @@ btnNuevo.addEventListener("click", () => {
   txtPlaca.value = "";
   txtAnotaciones.value = "";
   modalVehiculos.show();
+
+  // Activar codigo
+  txtCodigo.disabled = false;
   frmVehiculos.addEventListener("submit", (e) => {
     e.preventDefault();
+    // Validacion de que todos los campos contengan texto
+    if (
+      txtCodigo.value.length === 0 ||
+      txtDescripcion.value.length === 0 ||
+      txtMarca.value.length === 0 ||
+      txtModelo.value.length === 0 ||
+      txtPlaca.value.length === 0 ||
+      txtAnotaciones.value.length === 0
+    ) {
+      Swal.fire({
+        title: "Ocurrio un error...",
+        text: "Todos los campos son obligatorios",
+        icon: "error",
+        confirmButtonText: "Entendido",
+        width: 400,
+      });
+      return;
+    }
+
     fetch(ulrApi, {
       method: "POST",
-      header: { ContentType: "application-json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        codigo: txtCodigo.value,
+        id: txtCodigo.value,
         descripcion: txtDescripcion.value,
         marca: txtMarca.value,
         modelo: txtModelo.value,
@@ -154,12 +176,33 @@ tblVehiculos.addEventListener("click", (e) => {
     // Mostrar la modal
     modalVehiculos.show();
 
+    // Bloquear al editar
+    txtCodigo.disabled = true;
+
     // Desencadenar evento del formulario
     frmVehiculos.addEventListener("submit", (e) => {
       e.preventDefault();
+      // Validacion de que todos los campos contengan texto
+      if (
+        txtCodigo.value.length === 0 ||
+        txtDescripcion.value.length === 0 ||
+        txtMarca.value.length === 0 ||
+        txtModelo.value.length === 0 ||
+        txtPlaca.value.length === 0 ||
+        txtAnotaciones.value.length === 0
+      ) {
+        Swal.fire({
+          title: "Ocurrio un error...",
+          text: "Todos los campos son obligatorios",
+          icon: "error",
+          confirmButtonText: "Entendido",
+          width: 400,
+        });
+        return;
+      }
       fetch(ulrApi + codigo, {
         method: "PUT",
-        header: { ContentType: "application-json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           id: txtCodigo.value,
           descripcion: txtDescripcion.value,
