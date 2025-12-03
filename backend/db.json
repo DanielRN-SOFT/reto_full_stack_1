@@ -1,20 +1,20 @@
 {
   "vehiculos": [
     {
-      "id": "1",
-      "descripcion": "Carro 4 puertas de color blanco y negro sin vidrios",
-      "marca": "Renault",
-      "modelo": "2023",
-      "placa": "VDL235",
-      "anotaciones": "conduccion temeraria"
+      "id": "LKS12",
+      "descripcion": "Motocicleta negro mate",
+      "marca": "Honda",
+      "modelo": "2025",
+      "placa": "DKA21",
+      "anotaciones": "Vehiculo en buen estado pero sin espejos retrovisores"
     },
     {
-      "id": "0e36",
-      "descripcion": "Motocicleta 110cc negra con azul",
+      "id": "DFRN",
+      "descripcion": "Motocicleta de color azul mate",
       "marca": "Hero",
-      "modelo": "2025",
-      "placa": "VOK90L",
-      "anotaciones": "Exceso de facha, pinta, freseo"
+      "modelo": "2024",
+      "placa": "VLHK12",
+      "anotaciones": "Cumple con todas las revisiones, falta el SOAT"
     }
   ]
 }
